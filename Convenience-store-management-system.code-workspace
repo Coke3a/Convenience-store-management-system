@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "./server"
+		},
+		{
+			"path": "order_api"
+		},
+		{
+			"path": "store_management_api"
+		}
+	],
+	"settings": {}
+}
