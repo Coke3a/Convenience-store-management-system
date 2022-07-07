@@ -1,0 +1,16 @@
+kafka:
+  servers:
+    - localhost:9092
+  group: orderConsumer
+
+db:
+  driver: mysql
+  host: localhost
+  port: 3306
+  username: root
+  password: P@ssw0rd
+  database: myStore
+
+
+
+

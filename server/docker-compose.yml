@@ -1,0 +1,51 @@
+version: '3.9'
+
+
+networks:
+  app-tier:
+      driver: bridge
+
+services:
+
+  zookeeper:
+    image: zookeeper
+    container_name: zookeeper
+    volumes:
+      - ./zookeeper:/data
+    networks:
+      - app-tier
+  
+  kafka:
+    image: bitnami/kafka
+    container_name: kafka
+    ports: 
+      - 9092:9092
+    volumes:
+      - ./kafka:/bitnami/kafka/data
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+    depends_on:
+      - zookeeper
+    networks:
+      - app-tier
+
+
+  mysql:
+    image: mariadb
+    container_name: mysql
+    command:
+      - mysqld
+      - --default-authentication-plugin=mysql_native_password
+    environment:       
+      - MARIADB_ROOT_PASSWORD=P@ssw0rd
+      - MARIADB_DATABASE=myStore
+      - MARIADB_USER=root
+    ports: 
+      - 3306:3306
+    volumes: 
+      - ./mysql:/var/lib/mysql
+    networks:
+      - app-tier

@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "store_management_api"
+		},
+		{
+			"path": "order_consumer"
 		}
 	],
 	"settings": {}
