@@ -3,7 +3,7 @@ version: '3.9'
 
 networks:
   app-tier:
-      driver: bridge
+      driver: default
 
 services:
 
@@ -49,3 +49,4 @@ services:
       - ./mysql:/var/lib/mysql
     networks:
       - app-tier
+

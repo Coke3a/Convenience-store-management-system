@@ -1,11 +1,11 @@
 kafka:
   servers:
-    - localhost:9092
+    - 127.0.0.1:9092
   group: orderConsumer
 
 db:
   driver: mysql
-  host: localhost
+  host: host.docker.internal
   port: 3306
   username: root
   password: P@ssw0rd
